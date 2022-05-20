@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.라이브러리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
@@ -41,12 +42,11 @@
             this.totalTimeToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.playTimeToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.canvasPanel = new System.Windows.Forms.Panel();
+            this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.playButton = new System.Windows.Forms.ToolStripButton();
             this.pauseButton = new System.Windows.Forms.ToolStripButton();
             this.stopButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
-            this.라이브러리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -57,15 +57,23 @@
             // 
             this.menuStrip.BackColor = System.Drawing.Color.PaleGreen;
             this.menuStrip.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.라이브러리ToolStripMenuItem,
             this.fileToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(20, 60);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(744, 28);
+            this.menuStrip.Size = new System.Drawing.Size(744, 33);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip1";
             this.menuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip_ItemClicked);
+            // 
+            // 라이브러리ToolStripMenuItem
+            // 
+            this.라이브러리ToolStripMenuItem.Name = "라이브러리ToolStripMenuItem";
+            this.라이브러리ToolStripMenuItem.Size = new System.Drawing.Size(41, 29);
+            this.라이브러리ToolStripMenuItem.Text = "해";
+            this.라이브러리ToolStripMenuItem.Click += new System.EventHandler(this.라이브러리ToolStripMenuItem_Click);
             // 
             // fileToolStripMenuItem
             // 
@@ -74,26 +82,26 @@
             this.toolStripMenuItem1,
             this.exitMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(65, 24);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(82, 29);
             this.fileToolStripMenuItem.Text = "파일(&F)";
             this.fileToolStripMenuItem.Click += new System.EventHandler(this.fileToolStripMenuItem_Click);
             // 
             // openMenuItem
             // 
             this.openMenuItem.Name = "openMenuItem";
-            this.openMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.openMenuItem.Size = new System.Drawing.Size(173, 30);
             this.openMenuItem.Text = "열기(&O)...";
             this.openMenuItem.Click += new System.EventHandler(this.openMenuItem_Click_1);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(170, 6);
             // 
             // exitMenuItem
             // 
             this.exitMenuItem.Name = "exitMenuItem";
-            this.exitMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.exitMenuItem.Size = new System.Drawing.Size(173, 30);
             this.exitMenuItem.Text = "종료(&X)";
             // 
             // timer
@@ -103,20 +111,21 @@
             // statusStrip
             // 
             this.statusStrip.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.messageToolStripStatusLabel,
             this.totalTimeToolStripStatusLabel,
             this.playTimeToolStripStatusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(20, 516);
+            this.statusStrip.Location = new System.Drawing.Point(20, 510);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(744, 25);
+            this.statusStrip.Size = new System.Drawing.Size(744, 31);
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "statusStrip1";
             // 
             // messageToolStripStatusLabel
             // 
             this.messageToolStripStatusLabel.Name = "messageToolStripStatusLabel";
-            this.messageToolStripStatusLabel.Size = new System.Drawing.Size(587, 20);
+            this.messageToolStripStatusLabel.Size = new System.Drawing.Size(549, 25);
             this.messageToolStripStatusLabel.Spring = true;
             this.messageToolStripStatusLabel.Text = "Ready";
             this.messageToolStripStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -124,13 +133,13 @@
             // totalTimeToolStripStatusLabel
             // 
             this.totalTimeToolStripStatusLabel.Name = "totalTimeToolStripStatusLabel";
-            this.totalTimeToolStripStatusLabel.Size = new System.Drawing.Size(71, 20);
+            this.totalTimeToolStripStatusLabel.Size = new System.Drawing.Size(90, 25);
             this.totalTimeToolStripStatusLabel.Text = "00:00:00";
             // 
             // playTimeToolStripStatusLabel
             // 
             this.playTimeToolStripStatusLabel.Name = "playTimeToolStripStatusLabel";
-            this.playTimeToolStripStatusLabel.Size = new System.Drawing.Size(71, 20);
+            this.playTimeToolStripStatusLabel.Size = new System.Drawing.Size(90, 25);
             this.playTimeToolStripStatusLabel.Text = "00:00:00";
             // 
             // canvasPanel
@@ -141,39 +150,12 @@
             this.canvasPanel.Size = new System.Drawing.Size(744, 397);
             this.canvasPanel.TabIndex = 3;
             // 
-            // playButton
-            // 
-            this.playButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.playButton.Image = ((System.Drawing.Image)(resources.GetObject("playButton.Image")));
-            this.playButton.ImageTransparentColor = System.Drawing.Color.Red;
-            this.playButton.Name = "playButton";
-            this.playButton.Size = new System.Drawing.Size(23, 22);
-            this.playButton.Text = "toolStripButton1";
-            this.playButton.Click += new System.EventHandler(this.playButton_Click_1);
-            // 
-            // pauseButton
-            // 
-            this.pauseButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.pauseButton.Image = ((System.Drawing.Image)(resources.GetObject("pauseButton.Image")));
-            this.pauseButton.ImageTransparentColor = System.Drawing.Color.Red;
-            this.pauseButton.Name = "pauseButton";
-            this.pauseButton.Size = new System.Drawing.Size(23, 22);
-            this.pauseButton.Text = "toolStripButton2";
-            // 
-            // stopButton
-            // 
-            this.stopButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.stopButton.Image = ((System.Drawing.Image)(resources.GetObject("stopButton.Image")));
-            this.stopButton.ImageTransparentColor = System.Drawing.Color.Red;
-            this.stopButton.Name = "stopButton";
-            this.stopButton.Size = new System.Drawing.Size(23, 22);
-            this.stopButton.Text = "toolStripButton3";
-            // 
             // toolStrip
             // 
             this.toolStrip.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.toolStrip.Dock = System.Windows.Forms.DockStyle.None;
             this.toolStrip.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.toolStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.playButton,
             this.pauseButton,
@@ -182,7 +164,7 @@
             this.toolStripButton1});
             this.toolStrip.Location = new System.Drawing.Point(20, 491);
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(750, 25);
+            this.toolStrip.Size = new System.Drawing.Size(814, 27);
             this.toolStrip.TabIndex = 1;
             this.toolStrip.Text = "toolStrip1";
             this.toolStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip_ItemClicked);
@@ -190,15 +172,36 @@
             // toolStripProgressBar1
             // 
             this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(644, 22);
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(644, 24);
             this.toolStripProgressBar1.Click += new System.EventHandler(this.toolStripProgressBar1_Click);
             // 
-            // 라이브러리ToolStripMenuItem
+            // playButton
             // 
-            this.라이브러리ToolStripMenuItem.Name = "라이브러리ToolStripMenuItem";
-            this.라이브러리ToolStripMenuItem.Size = new System.Drawing.Size(33, 24);
-            this.라이브러리ToolStripMenuItem.Text = "해";
-            this.라이브러리ToolStripMenuItem.Click += new System.EventHandler(this.라이브러리ToolStripMenuItem_Click);
+            this.playButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.playButton.Image = global::TestProject.Properties.Resources.play;
+            this.playButton.ImageTransparentColor = System.Drawing.Color.Red;
+            this.playButton.Name = "playButton";
+            this.playButton.Size = new System.Drawing.Size(29, 24);
+            this.playButton.Text = "toolStripButton1";
+            this.playButton.Click += new System.EventHandler(this.playButton_Click_1);
+            // 
+            // pauseButton
+            // 
+            this.pauseButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.pauseButton.Image = global::TestProject.Properties.Resources.pause;
+            this.pauseButton.ImageTransparentColor = System.Drawing.Color.Red;
+            this.pauseButton.Name = "pauseButton";
+            this.pauseButton.Size = new System.Drawing.Size(29, 24);
+            this.pauseButton.Text = "toolStripButton2";
+            // 
+            // stopButton
+            // 
+            this.stopButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.stopButton.Image = global::TestProject.Properties.Resources.stop;
+            this.stopButton.ImageTransparentColor = System.Drawing.Color.Red;
+            this.stopButton.Name = "stopButton";
+            this.stopButton.Size = new System.Drawing.Size(29, 24);
+            this.stopButton.Text = "toolStripButton3";
             // 
             // toolStripButton1
             // 
@@ -206,7 +209,7 @@
             this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Size = new System.Drawing.Size(29, 24);
             this.toolStripButton1.Text = "toolStripButton1";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 

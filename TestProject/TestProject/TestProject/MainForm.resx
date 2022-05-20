@@ -126,35 +126,14 @@
   <metadata name="statusStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>225, 17</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="playButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAA8SURBVDhPYxje4D+UJhuADKDIEJgBZBuCbABZhqAbQLIh
-        KJobGhrIN4AczSBAkWYQoEgzA0WahxJgYAAAEGIlYzMVUdcAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="pauseButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAoSURBVDhPYxie4D8UIwNsYjjBqAGjBjA0NDT8B2EoFwyw
-        iQ0bwMAAAG/GLdln1ohSAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="stopButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAA8SURBVDhP7csxCgAwDMPAPD0/b5dSNJhoLz3QZteblqTS
-        ial0YiqdmEonptKJqXRiKp3YrLvX1Jl9V9UGJvBTuY2w6HsAAAAASUVORK5CYII=
-</value>
-  </data>
   <metadata name="toolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>126, 17</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="toolStripButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAA+s9J6AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAABDvSURBVHhe7Z2tjxRZFMXnL1iDWodDkKDWojc4LAaHX4HH
+        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAABDvSURBVHhe7Z2tjxRZFMXnL1iDWodDkKDWojc4LAaHX4HH
         YVAkCAwGhUOTjMIi12+yCoFGkJD0vjNbRYrmdtV751bfV7f6/JITZro+mpmu37yq93l1EEJ0RRIK0RlJ
         KERnJKEQnZGEQnRGEgrRGUkoRGckoRCdkYRCdEYSCtEZSShEZyShEJ2RhEJ0RhIK0RlJKGb5+vXr4fr6
         +vDu3bvD+/fvD3///fewRayFJBQmkO/Zs2eHq6urX3L79u0bMcU6SELxCx8+fDjcunXLFHCaFy9eDEcI
