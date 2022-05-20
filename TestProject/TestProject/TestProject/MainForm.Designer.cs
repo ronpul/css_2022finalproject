@@ -35,34 +35,37 @@
             this.openMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.종료ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.진짜종료ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.playButton = new System.Windows.Forms.ToolStripButton();
-            this.pauseButton = new System.Windows.Forms.ToolStripButton();
-            this.stopButton = new System.Windows.Forms.ToolStripButton();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.messageToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.totalTimeToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.playTimeToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.canvasPanel = new System.Windows.Forms.Panel();
+            this.playButton = new System.Windows.Forms.ToolStripButton();
+            this.pauseButton = new System.Windows.Forms.ToolStripButton();
+            this.stopButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            this.라이브러리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.menuStrip.SuspendLayout();
-            this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
+            this.toolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip
             // 
+            this.menuStrip.BackColor = System.Drawing.Color.PaleGreen;
             this.menuStrip.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.종료ToolStripMenuItem});
-            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.라이브러리ToolStripMenuItem,
+            this.fileToolStripMenuItem});
+            this.menuStrip.Location = new System.Drawing.Point(20, 60);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(784, 28);
+            this.menuStrip.Size = new System.Drawing.Size(744, 28);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip1";
+            this.menuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip_ItemClicked);
             // 
             // fileToolStripMenuItem
             // 
@@ -73,51 +76,70 @@
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(65, 24);
             this.fileToolStripMenuItem.Text = "파일(&F)";
+            this.fileToolStripMenuItem.Click += new System.EventHandler(this.fileToolStripMenuItem_Click);
             // 
             // openMenuItem
             // 
             this.openMenuItem.Name = "openMenuItem";
             this.openMenuItem.Size = new System.Drawing.Size(180, 24);
             this.openMenuItem.Text = "열기(&O)...";
+            this.openMenuItem.Click += new System.EventHandler(this.openMenuItem_Click_1);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(133, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
             // 
             // exitMenuItem
             // 
             this.exitMenuItem.Name = "exitMenuItem";
-            this.exitMenuItem.Size = new System.Drawing.Size(136, 24);
+            this.exitMenuItem.Size = new System.Drawing.Size(180, 24);
             this.exitMenuItem.Text = "종료(&X)";
             // 
-            // 종료ToolStripMenuItem
+            // timer
             // 
-            this.종료ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.진짜종료ToolStripMenuItem});
-            this.종료ToolStripMenuItem.Name = "종료ToolStripMenuItem";
-            this.종료ToolStripMenuItem.Size = new System.Drawing.Size(45, 24);
-            this.종료ToolStripMenuItem.Text = "종료";
+            this.timer.Enabled = true;
             // 
-            // 진짜종료ToolStripMenuItem
+            // statusStrip
             // 
-            this.진짜종료ToolStripMenuItem.Name = "진짜종료ToolStripMenuItem";
-            this.진짜종료ToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
-            this.진짜종료ToolStripMenuItem.Text = "진짜종료";
-            this.진짜종료ToolStripMenuItem.Click += new System.EventHandler(this.진짜종료ToolStripMenuItem_Click);
+            this.statusStrip.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.messageToolStripStatusLabel,
+            this.totalTimeToolStripStatusLabel,
+            this.playTimeToolStripStatusLabel});
+            this.statusStrip.Location = new System.Drawing.Point(20, 516);
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.Size = new System.Drawing.Size(744, 25);
+            this.statusStrip.TabIndex = 2;
+            this.statusStrip.Text = "statusStrip1";
             // 
-            // toolStrip
+            // messageToolStripStatusLabel
             // 
-            this.toolStrip.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.playButton,
-            this.pauseButton,
-            this.stopButton});
-            this.toolStrip.Location = new System.Drawing.Point(0, 28);
-            this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(784, 25);
-            this.toolStrip.TabIndex = 1;
-            this.toolStrip.Text = "toolStrip1";
+            this.messageToolStripStatusLabel.Name = "messageToolStripStatusLabel";
+            this.messageToolStripStatusLabel.Size = new System.Drawing.Size(587, 20);
+            this.messageToolStripStatusLabel.Spring = true;
+            this.messageToolStripStatusLabel.Text = "Ready";
+            this.messageToolStripStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // totalTimeToolStripStatusLabel
+            // 
+            this.totalTimeToolStripStatusLabel.Name = "totalTimeToolStripStatusLabel";
+            this.totalTimeToolStripStatusLabel.Size = new System.Drawing.Size(71, 20);
+            this.totalTimeToolStripStatusLabel.Text = "00:00:00";
+            // 
+            // playTimeToolStripStatusLabel
+            // 
+            this.playTimeToolStripStatusLabel.Name = "playTimeToolStripStatusLabel";
+            this.playTimeToolStripStatusLabel.Size = new System.Drawing.Size(71, 20);
+            this.playTimeToolStripStatusLabel.Text = "00:00:00";
+            // 
+            // canvasPanel
+            // 
+            this.canvasPanel.BackColor = System.Drawing.Color.Black;
+            this.canvasPanel.Location = new System.Drawing.Point(20, 91);
+            this.canvasPanel.Name = "canvasPanel";
+            this.canvasPanel.Size = new System.Drawing.Size(744, 397);
+            this.canvasPanel.TabIndex = 3;
             // 
             // playButton
             // 
@@ -147,70 +169,66 @@
             this.stopButton.Size = new System.Drawing.Size(23, 22);
             this.stopButton.Text = "toolStripButton3";
             // 
-            // timer
+            // toolStrip
             // 
-            this.timer.Enabled = true;
+            this.toolStrip.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.toolStrip.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStrip.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.playButton,
+            this.pauseButton,
+            this.stopButton,
+            this.toolStripProgressBar1,
+            this.toolStripButton1});
+            this.toolStrip.Location = new System.Drawing.Point(20, 491);
+            this.toolStrip.Name = "toolStrip";
+            this.toolStrip.Size = new System.Drawing.Size(750, 25);
+            this.toolStrip.TabIndex = 1;
+            this.toolStrip.Text = "toolStrip1";
+            this.toolStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip_ItemClicked);
             // 
-            // statusStrip
+            // toolStripProgressBar1
             // 
-            this.statusStrip.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.messageToolStripStatusLabel,
-            this.totalTimeToolStripStatusLabel,
-            this.playTimeToolStripStatusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 536);
-            this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(784, 25);
-            this.statusStrip.TabIndex = 2;
-            this.statusStrip.Text = "statusStrip1";
+            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(644, 22);
+            this.toolStripProgressBar1.Click += new System.EventHandler(this.toolStripProgressBar1_Click);
             // 
-            // messageToolStripStatusLabel
+            // 라이브러리ToolStripMenuItem
             // 
-            this.messageToolStripStatusLabel.Name = "messageToolStripStatusLabel";
-            this.messageToolStripStatusLabel.Size = new System.Drawing.Size(627, 20);
-            this.messageToolStripStatusLabel.Spring = true;
-            this.messageToolStripStatusLabel.Text = "Ready";
-            this.messageToolStripStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.라이브러리ToolStripMenuItem.Name = "라이브러리ToolStripMenuItem";
+            this.라이브러리ToolStripMenuItem.Size = new System.Drawing.Size(33, 24);
+            this.라이브러리ToolStripMenuItem.Text = "해";
+            this.라이브러리ToolStripMenuItem.Click += new System.EventHandler(this.라이브러리ToolStripMenuItem_Click);
             // 
-            // totalTimeToolStripStatusLabel
+            // toolStripButton1
             // 
-            this.totalTimeToolStripStatusLabel.Name = "totalTimeToolStripStatusLabel";
-            this.totalTimeToolStripStatusLabel.Size = new System.Drawing.Size(71, 20);
-            this.totalTimeToolStripStatusLabel.Text = "00:00:00";
-            // 
-            // playTimeToolStripStatusLabel
-            // 
-            this.playTimeToolStripStatusLabel.Name = "playTimeToolStripStatusLabel";
-            this.playTimeToolStripStatusLabel.Size = new System.Drawing.Size(71, 20);
-            this.playTimeToolStripStatusLabel.Text = "00:00:00";
-            // 
-            // canvasPanel
-            // 
-            this.canvasPanel.BackColor = System.Drawing.Color.Black;
-            this.canvasPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.canvasPanel.Location = new System.Drawing.Point(0, 53);
-            this.canvasPanel.Name = "canvasPanel";
-            this.canvasPanel.Size = new System.Drawing.Size(784, 483);
-            this.canvasPanel.TabIndex = 3;
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Text = "toolStripButton1";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.canvasPanel);
             this.Controls.Add(this.statusStrip);
-            this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.menuStrip);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MainForm";
             this.Text = "C#프로그래밍 텀프로젝트";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
-            this.toolStrip.ResumeLayout(false);
-            this.toolStrip.PerformLayout();
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
+            this.toolStrip.ResumeLayout(false);
+            this.toolStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -223,18 +241,19 @@
         private System.Windows.Forms.ToolStripMenuItem openMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem exitMenuItem;
-        private System.Windows.Forms.ToolStrip toolStrip;
-        private System.Windows.Forms.ToolStripButton playButton;
-        private System.Windows.Forms.ToolStripButton pauseButton;
-        private System.Windows.Forms.ToolStripButton stopButton;
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel messageToolStripStatusLabel;
         private System.Windows.Forms.ToolStripStatusLabel totalTimeToolStripStatusLabel;
         private System.Windows.Forms.ToolStripStatusLabel playTimeToolStripStatusLabel;
         private System.Windows.Forms.Panel canvasPanel;
-        private System.Windows.Forms.ToolStripMenuItem 종료ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 진짜종료ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton playButton;
+        private System.Windows.Forms.ToolStripButton pauseButton;
+        private System.Windows.Forms.ToolStripButton stopButton;
+        private System.Windows.Forms.ToolStrip toolStrip;
+        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
+        private System.Windows.Forms.ToolStripMenuItem 라이브러리ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
     }
 }
 
