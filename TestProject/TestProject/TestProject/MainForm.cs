@@ -347,7 +347,9 @@ namespace TestProject
             if(this.mediaStatus == MediaStatus.RUNNING)
             {
                 UpdateStatusBar();
+                trcBar.Value += 1;
             }
+            
         }
 
         #endregion
@@ -430,7 +432,7 @@ namespace TestProject
                     this.playButton.Enabled  = false;
                     this.pauseButton.Enabled = false;
                     this.stopButton.Enabled  = false;
-                    
+                    trcBar.Value = 0;
                     break;
                                           
                 case MediaStatus.PAUSED :
@@ -438,7 +440,8 @@ namespace TestProject
                     this.playButton.Enabled  = true;
                     this.pauseButton.Enabled = false;
                     this.stopButton.Enabled  = true;
-                    
+                    trcBar.Maximum = (int)mediaPosition.Duration * 10;
+
                     break;
                                           
                 case MediaStatus.RUNNING :
@@ -446,7 +449,8 @@ namespace TestProject
                     this.playButton.Enabled  = false;
                     this.pauseButton.Enabled = true;
                     this.stopButton.Enabled  = true;
-                    
+                    trcBar.Maximum = (int)mediaPosition.Duration * 10;
+
                     break;
                                           
                 case MediaStatus.STOPPED :
@@ -454,7 +458,9 @@ namespace TestProject
                     this.playButton.Enabled  = true;
                     this.pauseButton.Enabled = false;
                     this.stopButton.Enabled  = false;
-                    
+                    trcBar.Maximum = (int)mediaPosition.Duration * 10;
+                    trcBar.Value = 0;
+
                     break;
             }
         }
@@ -541,17 +547,31 @@ namespace TestProject
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            trcBar.Maximum = prgBar.Maximum = 100;
-            trcBar.Minimum = prgBar.Minimum = 0;
+            
             trcBar.Show();
 
         }
 
         private void trcBar_Scroll(object sender, EventArgs e)
         {
-            trcBar.Maximum = prgBar.Maximum;
-            prgBar.Value = trcBar.Value;
+            trcBar.Value = (int)mediaPosition.Duration;
+            
 
+        }
+        private void trcBar_MouseDown(object sender, MouseEventArgs e)
+        {
+           
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trackBar1_Scroll_1(object sender, EventArgs e)
+        {
+            int MyVolume = trackBar1.Value;
+            SoundUtils.SetVolumePercent(MyVolume);
         }
     }
 }
