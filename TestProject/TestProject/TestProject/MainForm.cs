@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 
 using QuartzTypeLib;
+using System.Runtime.InteropServices;
 
 namespace TestProject
 {
@@ -97,6 +98,9 @@ namespace TestProject
 
             UpdateToolBar();
             UpdateStatusBar();
+
+            Win32.SetSoundVolume(5);
+            //trackbar1.Value = Win32.GetSoundVolume();
 
             FormClosing             += Form_FormClosing;
             SizeChanged             += Form_SizeChanged;
@@ -497,63 +501,56 @@ namespace TestProject
 
         #endregion
 
-        private void playButton_Click_1(object sender, EventArgs e)
+        public class Win32
         {
+            #region 사운드 관련
+            [DllImport("winmm.dll")]
+            public static extern int waveOutGetVolume(IntPtr hwo, out uint dwVolume);
 
+            [DllImport("winmm.dll")]
+            public static extern int waveOutSetVolume(IntPtr hwo, uint dwVolume);
+
+            public static void SetSoundVolume(int volume)
+            {
+                try
+                {
+                    int newVolume = ((ushort.MaxValue / 10) * volume);
+                    uint newVolumeAllChannels = (((uint)newVolume & 0x0000ffff) | ((uint)newVolume << 16));
+                    waveOutSetVolume(IntPtr.Zero, newVolumeAllChannels);
+                }
+                catch (Exception) { }
+            }
+
+            public static int GetSoundVolume()
+            {
+                int value = 0;
+                try
+                {
+                    uint CurrVol = 0;
+                    waveOutGetVolume(IntPtr.Zero, out CurrVol);
+                    ushort CalcVol = (ushort)(CurrVol & 0x0000ffff);
+                    value = CalcVol / (ushort.MaxValue / 10);
+                }
+                catch (Exception) { }
+                return value;
+            }
+            #endregion
         }
 
-        private void 진짜종료ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void openMenuItem_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void 종료ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void menuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void metroButton1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            trcBar.Maximum = prgBar.Maximum = 100;
+            trcBar.Minimum = prgBar.Minimum = 0;
+            trcBar.Show();
 
         }
 
-        private void toolStripProgressBar1_Click(object sender, EventArgs e)
+        private void trcBar_Scroll(object sender, EventArgs e)
         {
-
-        }
-
-        private void 라이브러리ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolStripButton1_Click(object sender, EventArgs e)
-        {
+            trcBar.Maximum = prgBar.Maximum;
+            prgBar.Value = trcBar.Value;
 
         }
     }
